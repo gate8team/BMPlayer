@@ -35,6 +35,7 @@ open class BMPlayer: UIView {
     open weak var delegate: BMPlayerDelegate?
     
     open var backBlock:((Bool) -> Void)?
+    open var fullScreenBlock:((Bool) -> Void)?
     
     /// Gesture to change volume / brightness
     open var panGesture: UIPanGestureRecognizer!
@@ -529,6 +530,7 @@ extension BMPlayer: BMPlayerControlViewDelegate {
                 play()
                 
             case .fullscreen:
+                fullScreenBlock?(isFullScreen)
                 fullScreenButtonPressed()
                 
             default:
